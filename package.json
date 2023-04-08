@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "start": "echo index.js",
+        "build": "npm run start",
+        "lint": "echo ok",
+        "test": "echo ok",
+        "deploy": "npm run lint && npm run test && npm run build"
+    }
+}
