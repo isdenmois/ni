@@ -1,6 +1,6 @@
 # ni
-Uses the package manager used in the project
 
+Uses the package manager used in the project
 
 ## Installation
 
@@ -37,20 +37,34 @@ ni @types/node -D
 # bun add -d @types/node
 ```
 
+## `nit`
+
+Installs packages and types packages by only using one command
+
+```bash
+nit lodash
+
+# npm i lodash && npm i -D @types/lodash
+# yarn add lodash && yarn add -D @types/lodash
+# pnpm add lodash && pnpm add -D @types/lodash
+# bun add lodash && bun add -d @types/lodash
+```
+
 ## `nr`
+
 Runs the script from package.json.
 
 Instead of waiting 200ms for your npm client to start, it will start immediately.
 
 Benchmark (`hyperfine "nr deploy" "npm run deploy" --warmup 10`):
 
-| Command       |   Mean [ms] | Min [ms] | Max [ms] |    Relative |
-| :------------ | ----------: | -------: | -------: | ----------: |
-| `nr deploy`     |  4.1 ± 0.2 |     3.8 |     4.9 |        1.00 |
-| `npm run deploy` | 1160.0 ± 4.0 |    1155.0 |    1168.0 | 281.68 ± 14.02 |
-
+| Command          |    Mean [ms] | Min [ms] | Max [ms] |       Relative |
+| :--------------- | -----------: | -------: | -------: | -------------: |
+| `nr deploy`      |    4.1 ± 0.2 |      3.8 |      4.9 |           1.00 |
+| `npm run deploy` | 1160.0 ± 4.0 |   1155.0 |   1168.0 | 281.68 ± 14.02 |
 
 ### Usage
+
 ```bash
 nr dev --port=3000 # runs the "dev" script and forwards the port to the command
 ```
@@ -60,6 +74,7 @@ nr # runs the "start" script
 ```
 
 ## `nun`
+
 Unistalls packages using the right package manager.
 
 ```bash
