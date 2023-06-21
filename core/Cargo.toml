@@ -1,0 +1,8 @@
+[package]
+name = "ni_core"
+version = "1.0.0"
+workspace = ".."
+edition = "2018"
+
+[dependencies]
+ansi_term = "0.12.1"

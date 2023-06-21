@@ -2,12 +2,10 @@ use std::collections::HashMap;
 use std::env;
 use std::fs::read_to_string;
 use std::path::PathBuf;
-use std::process::{exit, Command};
+use std::process::exit;
 
-use ansi_term::{
-    Color::{Purple, Red},
-    Style,
-};
+use ansi_term::Color::Red;
+use ni_core::execute::execute_command;
 use serde_json::{Map, Value};
 
 fn get_path_env() -> String {
@@ -28,7 +26,7 @@ fn get_command() -> (String, String) {
     let args: Vec<String> = args_vec[1..].to_vec();
 
     if args.len() > 0 {
-        return (args.first().unwrap().to_owned(), args[1..].join(""));
+        return (args.first().unwrap().to_owned(), args[1..].join(" "));
     };
 
     return (String::from("start"), String::from(""));
@@ -84,20 +82,9 @@ fn main() {
     let npm_script = get_script(package.scripts);
 
     if let Some(script) = npm_script {
-        println!(
-            "{} {}",
-            Purple.dimmed().paint(">"),
-            Style::new().bold().dimmed().paint(&script),
-        );
+        let code = execute_command(script, envs);
 
-        let status = Command::new("sh")
-            .arg("-c")
-            .arg(script)
-            .envs(envs)
-            .status()
-            .expect("failed to execute the command");
-
-        exit(status.code().unwrap_or(1));
+        exit(code);
     }
 
     println!("{}", Red.normal().paint("No script found."));
