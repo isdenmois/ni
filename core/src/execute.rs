@@ -3,6 +3,7 @@ use std::{collections::HashMap, process::Command};
 use ansi_term::{Color::Purple, Style};
 
 pub fn execute_command(command: String, envs: HashMap<String, String>) -> i32 {
+    #[cfg(not(simulation))]
     println!(
         "{} {}",
         Purple.dimmed().paint(">"),

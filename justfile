@@ -21,3 +21,7 @@ deploy-local:
 benchmark:
   just build
   hyperfine "nr deploy" "./target/release/nr deploy" --warmup 10
+
+test:
+  RUSTFLAGS='--cfg simulation' cargo build -r
+  cd test; ./test.sh

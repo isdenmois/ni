@@ -4,7 +4,7 @@ pub fn get_install_command(agent: Agent) -> String {
     match agent {
         Agent::PNPM => String::from("pnpm install"),
         Agent::Bun => String::from("bun install"),
-        Agent::Yarn => String::from("yarn"),
+        Agent::Yarn => String::from("yarn install"),
         Agent::NPM => String::from("npm install"),
     }
 }
