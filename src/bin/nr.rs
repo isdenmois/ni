@@ -21,15 +21,19 @@ fn get_path_env() -> String {
     .unwrap()
 }
 
-fn get_command() -> (String, String) {
+fn get_command(scripts: &Map<String, Value>) -> (String, String) {
     let args_vec: Vec<String> = env::args().collect();
     let args: Vec<String> = args_vec[1..].to_vec();
 
     if args.len() > 0 {
         return (args.first().unwrap().to_owned(), args[1..].join(" "));
-    };
+    }
 
-    return (String::from("start"), String::from(""));
+    if scripts.contains_key("start") {
+        return (String::from("start"), String::from(""));
+    }
+
+    return (String::from("dev"), String::from(""));
 }
 
 struct PackageJson {
@@ -51,7 +55,7 @@ fn get_package_json() -> PackageJson {
 }
 
 fn get_script(scripts: Map<String, Value>) -> Option<String> {
-    let (command, forward) = get_command();
+    let (command, forward) = get_command(&scripts);
     let npm_script = scripts.get(command.as_str()).map(|script| {
         let script = script.as_str().map(|script| script.to_string());
         script.unwrap_or_default()
