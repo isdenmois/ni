@@ -58,7 +58,11 @@ fn get_script(scripts: Map<String, Value>) -> Option<String> {
     });
 
     if let Some(script) = npm_script {
-        let mut script = script.replace("npm run", "nr");
+        let mut script = script
+            .replace("pnpm run", "nr")
+            .replace("npm run", "nr")
+            .replace("bun run", "nr")
+            .replace("yarn ", "nr ");
 
         if forward.len() > 0 {
             script.push_str(" ");

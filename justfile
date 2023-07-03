@@ -17,3 +17,7 @@ deploy-local:
   sudo cp deprecated/nun.sh /usr/local/bin/nun
   sudo cp src/nit.sh /usr/local/bin/nit
   sudo chmod +x /usr/local/bin/nr /usr/local/bin/ni /usr/local/bin/nun /usr/local/bin/nit
+
+benchmark:
+  just build
+  hyperfine "nr deploy" "./target/release/nr deploy" --warmup 10
