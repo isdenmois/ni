@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+fpath+="${0:A:h}/completions"
+
 GITHUB_REPO="isdenmois/ni"
 
 [[ -z "$NI_HOME" ]] && export NI_HOME="$HOME/.local/share/ni"
