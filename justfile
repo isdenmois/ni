@@ -13,12 +13,12 @@ release:
 
 deploy-local:
   just build
-  sudo cp target/release/ni /usr/local/bin/ni
-  sudo cp target/release/nr /usr/local/bin/nr
-  sudo cp target/release/ni-completions /usr/local/bin/ni-completions
-  sudo cp deprecated/nun.sh /usr/local/bin/nun
-  sudo cp src/nit.sh /usr/local/bin/nit
-  sudo chmod +x /usr/local/bin/nr /usr/local/bin/ni /usr/local/bin/ni-completions /usr/local/bin/nun /usr/local/bin/nit
+  cp target/release/ni $NI_HOME/ni
+  cp target/release/nr $NI_HOME/nr
+  cp target/release/ni-completions $NI_HOME/ni-completions
+  cp deprecated/nun.sh $NI_HOME/nun
+  cp src/nit.sh $NI_HOME/nit
+  chmod +x $NI_HOME/nr $NI_HOME/ni $NI_HOME/ni-completions $NI_HOME/nun $NI_HOME/nit
 
 benchmark:
   just build
