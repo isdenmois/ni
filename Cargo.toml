@@ -12,6 +12,9 @@ name = "ni"
 [[bin]]
 name = "nr"
 
+[[bin]]
+name = "ni-completions"
+
 [profile.release]
 strip = true
 opt-level = 3

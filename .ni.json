@@ -1,0 +1,15 @@
+{
+    "scripts": {
+        "test": [
+            "--help[Shows a help message for this command in the console.]"
+        ],
+        "format": [
+            "--cache[Cache]",
+            "--path[Path]",
+            "-f[input file]:filename:_files",
+            "1:first arg:_net_interfaces",
+            ":next arg:(a b c)",
+            "-m[music file]:filename:->files"
+        ]
+    }
+}
